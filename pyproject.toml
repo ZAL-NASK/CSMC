@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "csmc"
+version = "0.1.4"
+description = ""
+authors = ["Antonina Krajewska <antonina.krajewska@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+SciPy = "^1.11.4"
+cvxpy = "^1.4.1"
+fbpca = "^1.0"
+torch = "^2.1.2"
+numba = "^0.58.1"
+threadpoolctl = "^3.2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+ruff = "^0.1.9"
+mypy = "^1.8.0"
+jupyter = "^1.0.0"
+matplotlib = "^3.8.2"
+scikit-image = "^0.22.0"
+opencv-python = "^4.9.0"
+
+[tool.ruff]
+line-length = 200
+target-version = "py311"
+select = ["ALL"]
+ignore = ["N", "D107", "ANN101", "TD", "FIX", "ERA001", "ANN002", "ANN003", "ANN204", "PLR0913", "RET505"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
