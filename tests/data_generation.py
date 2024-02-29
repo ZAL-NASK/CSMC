@@ -4,7 +4,7 @@ import numpy as np
 import scipy
 import torch
 from numpy import ndarray
-
+from csmc.settings import T
 
 def incoherent_subspace(n: int, r: int) -> ndarray:
     """Create incoherent subspace with Hadamard transform."""
@@ -110,10 +110,10 @@ def create_rank_k_tensor(
 #
 #
 def remove_pixels_uniformly(
-        X: np.ndarray,
+        X: T,
         missing_part: float = 0.9,
-        random_seed=0, numlib="numpy") -> np.ndarray:
-    if numlib == "numpy":
+        random_seed=0) -> np.ndarray:
+    if isinstance(X, np.ndarray):
         X_missing = np.copy(X).astype("float32")
         index_nan = np.random.choice(X.size, int(missing_part * X.size), replace=False)
         X_missing.ravel()[index_nan] = np.nan

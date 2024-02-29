@@ -7,6 +7,7 @@ In the second stage, it solves a least squares problem to reconstruct the whole 
 
 <img src="resources/CSMC.png" alt="Alt text" width="400px" />
 
+CSMC supports numpy arrays and pytorch tensors.
 
 ## Installation
 
@@ -53,13 +54,30 @@ M_filled = solver.fit_transform(M_incomplete, np.isnan(M_incomplete))
 ```
 
 ## Algorithms
-* `NuclearNormMin`: Matrix completion by SDP (NN algorithm) [Exact Matrix Completion via Convex Optimization](http://statweb.stanford.edu/~candes/papers/MatrixCompletion.pdf
+* `NuclearNormMin`: Matrix completion by SDP (NN algorithm) [Exact Matrix Completion via Convex Optimization](http://statweb.stanford.edu/~candes/papers/MatrixCompletion.pdf)
 * `CSNN`: Matrix completion by CSNN
 * `PGD`: Nuclear norm minimization using Proximal Gradient Descent (PGD)  [Spectral Regularization Algorithms for Learning Large Incomplete Matrices](http://web.stanford.edu/~hastie/Papers/mazumder10a.pdf) by Mazumder et. al.
 * `CSPGD`: Matrix completion by CSPGD
 
+## Examples
+
+* [small synthetic matrices](examples/synthetic.ipynb)
+* [big synthetic matrices](examples/synthetic_tensor.ipynb)
+* [small images inpainting](examples/images.ipynb)
+* [big images inpainting](examples/images.ipynb)
+## Configuration
+
+To adjust the number of [threads](https://pytorch.org/docs/stable/generated/torch.set_num_threads.html) used for intraop parallelism on CPU, modify variable: 
+
+```
+NUM_THREADS = 8
+```
+in settings.py
+
+
 ## Citation
 
 Krajewska, A., Niewiadomska-Szynkiewicz E. (2023). Matrix Completion with Column Subset Selection.
+
 Krajewska, A. (2023).  [Efficient matrix completion for data recovery in data-driven IT applications](https://www.e-bip.org.pl/upload/00998/37859/1088193-82224218.pdf). Systems Research Institute
 Polish Academy of Sciences.

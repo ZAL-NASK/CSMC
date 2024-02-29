@@ -2,9 +2,10 @@ import logging
 import sys
 from typing import TypeVar
 
+import torch
 from numpy import ndarray
 from torch import Tensor
-import torch
+
 LOGGER = logging.getLogger("__csmc__")
 LOGGER.propagate = False
 LOGGER.setLevel(logging.INFO)
@@ -20,4 +21,6 @@ T = TypeVar("T", ndarray, Tensor)
 
 UNSUPPORTED_MSG ="Unsupported data type for X."
 
-torch.set_num_threads(8)
+NUM_THREADS = 8
+
+torch.set_num_threads(NUM_THREADS)

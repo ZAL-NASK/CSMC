@@ -16,7 +16,7 @@ python = "^3.10"
 SciPy = "^1.11.4"
 cvxpy = "^1.4.1"
 fbpca = "^1.0"
-torch = "^2.1.2"
+torch = "^2.2"
 numba = "^0.58.1"
 threadpoolctl = "^3.2.0"
 

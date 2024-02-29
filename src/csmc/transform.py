@@ -37,10 +37,10 @@ def _dls_torch(X: T, ok_mask: T, C: T, Y: T, n: int, cuda_support: bool) -> None
         mask_i = ok_mask[:, i]
         if cuda_support:
             try:
-                Y[i, :] = torch.linalg.lstsq(C[mask_i], X[mask_i, i], driver="gels")[0]
+                Y[:, i] = torch.linalg.lstsq(C[mask_i], X[mask_i, i], driver="gels")[0]
             except RuntimeError:
                 print("Falling back")
-                Y[i, :] = torch.linalg.pinv(C[mask_i]) @ X[mask_i, i]
+                Y[:, i] = torch.linalg.pinv(C[mask_i]) @ X[mask_i, i]
         else:
             try:
                 Y[:, i] = torch.linalg.lstsq(C[mask_i], X[mask_i, i], driver="gelsy")[0]

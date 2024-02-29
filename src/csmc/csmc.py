@@ -41,6 +41,7 @@ class CSMCBase(Generic[T]):
         self.lambda_ = lambda_
         self.max_rank = max_rank
         self.C_incomplete = None
+        self.phase_fill_result = False
 
     def fit_transform(self, X: T) -> T:
         """Complete matrix with CSMC."""
@@ -87,6 +88,8 @@ class CSMCBase(Generic[T]):
         X_filled[ok_mask] = X_org[ok_mask]
         out = self._transform(X_filled, ok_mask, C_filled)
         out[ok_mask] = X_org[ok_mask]
+        if self.phase_fill_result:
+            return out, X_filled
         return out
 
     @abstractmethod
