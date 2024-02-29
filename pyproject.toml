@@ -1,11 +1,15 @@
 [tool.poetry]
 name = "csmc"
-version = "0.1.7"
+version = "0.1.9"
 description = "Matrix completion with column subset selection."
 authors = ["Antonina Krajewska <antonina.krajewska@gmail.com>"]
 homepage = "https://github.com/ZAL-NASK/CSMC"
 readme = "README.md"
 license = "MIT"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research"
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -34,9 +38,3 @@ ignore = ["N", "D107", "ANN101", "TD", "FIX", "ERA001", "ANN002", "ANN003", "ANN
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[metadata]
-classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
-    "Intended Audience :: Science/Research"
-]
