@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "csmc"
-version = "0.1.9"
+version = "1.0.0"
 description = "Matrix completion with column subset selection."
 authors = ["Antonina Krajewska <antonina.krajewska@gmail.com>"]
 homepage = "https://github.com/ZAL-NASK/CSMC"
