@@ -49,7 +49,7 @@ class SoftImputeBase(Generic[T]):
             else:
                 Z_new, rank = self.shrinkage_operator(Z_old)
             if self._converged(Z_new, Z_old):
-                LOGGER.debug(f"Converged after {iter_} iterations and rankd {rank} ")
+                LOGGER.debug(f"Converged after {iter_} iterations and rank {rank} ")
                 break
             Z_old = Z_new
         Z_new[ok_mask] = X[ok_mask]

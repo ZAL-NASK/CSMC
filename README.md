@@ -53,11 +53,20 @@ solver = NuclearNormMin(M_incomplete)
 M_filled = solver.fit_transform(M_incomplete, np.isnan(M_incomplete))
 ```
 
+3. Fill with Frank-Wolfe (Conditional Gradient Method)
+
+```python
+from csmc import CGM
+solver = CGM(M_incomplete)
+M_filled = solver.fit_transform(M_incomplete, np.isnan(M_incomplete))
+```
+
 ## Algorithms
 * `NuclearNormMin`: Matrix completion by SDP (NN algorithm) [Exact Matrix Completion via Convex Optimization](http://statweb.stanford.edu/~candes/papers/MatrixCompletion.pdf)
 * `CSNN`: Matrix completion by CSNN
 * `PGD`: Nuclear norm minimization using Proximal Gradient Descent (PGD)  [Spectral Regularization Algorithms for Learning Large Incomplete Matrices](http://web.stanford.edu/~hastie/Papers/mazumder10a.pdf) by Mazumder et. al.
 * `CSPGD`: Matrix completion by CSPGD
+* `CGM`: Matrix completion with Frank-Wolfe method
 
 ## Examples
 
@@ -65,6 +74,7 @@ M_filled = solver.fit_transform(M_incomplete, np.isnan(M_incomplete))
 * [big synthetic matrices](examples/synthetic_tensor.ipynb)
 * [small images inpainting](examples/images.ipynb)
 * [big images inpainting](examples/images.ipynb)
+* [cgm](examples/synthetic_cgm.ipynb)
 ## Configuration
 
 To adjust the number of [threads](https://pytorch.org/docs/stable/generated/torch.set_num_threads.html) used for intraop parallelism on CPU, modify variable: 
