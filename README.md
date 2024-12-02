@@ -87,7 +87,6 @@ in settings.py
 
 ## Citation
 
-Krajewska, A., Niewiadomska-Szynkiewicz E. (2023). Matrix Completion with Column Subset Selection.
+Krajewska, A., Niewiadomska-Szynkiewicz E. (2024). [Matrix Completion with Column Subset Selection](https://doi.org/10.48550/arXiv.2403.01919).
 
-Krajewska, A. (2023).  [Efficient matrix completion for data recovery in data-driven IT applications](https://www.e-bip.org.pl/upload/00998/37859/1088193-82224218.pdf). Systems Research Institute
-Polish Academy of Sciences.
+Krajewska, A. , Niewiadomska-Szynkiewicz E., "Efficient Data Completion and Augmentation." 2024 IEEE 11th International Conference on Data Science and Advanced Analytics (DSAA). IEEE, 2024.
