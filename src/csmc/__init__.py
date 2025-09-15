@@ -2,7 +2,8 @@
 
 __version__ = "0.1.0"
 
-
+from . import mc_sota
+from . import adaptive_mc
 from .csmc import CSMC
 from .mc.nn_completion import NuclearNormMin
 from .mc.soft_impute import SoftImpute
