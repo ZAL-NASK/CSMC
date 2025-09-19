@@ -4,7 +4,15 @@ import numpy as np
 import scipy
 import torch
 from numpy import ndarray
+
 from csmc.settings import T
+
+
+def set_seed(seed: int):
+    np.random.seed(seed)
+    rng = np.random.default_rng(seed)
+    torch.manual_seed(seed)
+    random.seed(seed)
 
 def incoherent_subspace(n: int, r: int) -> ndarray:
     """Create incoherent subspace with Hadamard transform."""
