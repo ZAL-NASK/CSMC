@@ -9,11 +9,10 @@ import numpy as np
 import torch
 from torch import Tensor
 
-from csmc.settings import T, LOGGER, UNSUPPORTED_MSG
 from csmc.css import uniform
 from csmc.mc.nn_completion import NuclearNormMin
+from csmc.settings import T, LOGGER, UNSUPPORTED_MSG
 from csmc.transform import dls
-
 
 
 class FillMethod(Enum):
@@ -31,7 +30,7 @@ class CSMCBase(Generic[T]):
     def __init__(self, X: T, col_number: int, col_select: Callable = uniform,
                  transform: Callable = dls, solver: Callable = NuclearNormMin,
                  threshold: float = 0, fill_method: FillMethod = FillMethod.ZERO,
-                 lambda_: float = 0, max_rank: int | None = None) -> None:
+                 lambda_: float = 0, max_rank: int | None = None, max_iter: int | None = None) -> None:
         self.col_number = col_number
         self.col_select = col_select
         self._transform = transform
@@ -42,10 +41,12 @@ class CSMCBase(Generic[T]):
         self.max_rank = max_rank
         self.C_incomplete = None
         self.phase_fill_result = False
+        self.max_iter = max_iter
 
     def fit_transform(self, X: T) -> T:
         """Complete matrix with CSMC."""
-        X_tmp = self._copy(X)
+        X_tmp = X
+        # X_tmp = self._copy(X)
         missing_mask = self._missing_mask(X_tmp)
         self._prepare(X_tmp, missing_mask)
         if self.C_incomplete is None:
@@ -64,7 +65,8 @@ class CSMCBase(Generic[T]):
     def fill_columns(self, C_incomplete: T, missing_mask: T) -> T:
         """Complete column submatrix."""
         solver = self.solver(C_incomplete, lambda_=self.lambda_,
-                             max_rank=self.max_rank) if self.lambda_ else self.solver(C_incomplete)
+                             max_rank=self.max_rank, max_iter=self.max_iter) if self.lambda_ else self.solver(
+            C_incomplete)
         return solver.fit_transform(C_incomplete, missing_mask)
 
     def _fill_columns_with_fn(self, X: T, missing_mask: T, col_fn: Callable) -> None:
