@@ -8,9 +8,9 @@ from torch import Tensor
 
 LOGGER = logging.getLogger("__csmc__")
 LOGGER.propagate = False
-LOGGER.setLevel(logging.INFO)
+LOGGER.setLevel(logging.DEBUG)
 _stream_handler = logging.StreamHandler(sys.stdout)
-_stream_handler.setLevel(logging.INFO)
+_stream_handler.setLevel(logging.DEBUG)
 _formatter = logging.Formatter(
     fmt="(CSMC) %(asctime)s: %(message)s", datefmt="%b %d %I:%M:%S %p"
 )

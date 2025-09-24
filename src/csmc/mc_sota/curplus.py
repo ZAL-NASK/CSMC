@@ -28,7 +28,7 @@ class FillMethod(Enum):
 
 
 class CURBase(Generic[T]):
-    """Base class for CUR sampling model."""
+    """Base class for CUR+ sampling model."""
 
     def __init__(self, X: T, col_number: int, rank: int, col_select: Callable = uniform,
                  solver: Callable = NuclearNormMin,
@@ -145,7 +145,7 @@ class CUR_N(CURBase[np.ndarray]):
 
 
 class CUR_T:
-    """Class for CUR for torch tensors (not implemented yet)."""
+    """Class for CUR+ for torch tensors (not implemented yet)."""
 
     def __init__(self, X: Tensor, **kwargs) -> None:
         raise NotImplementedError(
@@ -154,7 +154,7 @@ class CUR_T:
 
 
 class CUR:
-    """Class for CSMC."""
+    """Class for CUR+."""
 
     def __new__(cls, X: T, *args, **kwargs):
         """Create CUR object based on the type of X."""

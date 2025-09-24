@@ -247,6 +247,14 @@ test = ["contourpy", "matplotlib", "pillow"]
 test-no-images = ["pytest", "pytest-cov", "pytest-xdist", "wurlitzer"]
 
 [[package]]
+name = "cvxopt"
+version = "1.3.2"
+description = "Convex optimization package"
+category = "dev"
+optional = false
+python-versions = ">=3, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
 name = "cvxpy"
 version = "1.4.2"
 description = "A domain-specific language for modeling convex optimization problems in Python."
@@ -351,6 +359,22 @@ python-versions = ">=3.5"
 
 [package.extras]
 tests = ["asttokens (>=2.1.0)", "ipython", "pytest", "coverage", "coverage-enable-subprocess", "littleutils", "rich"]
+
+[[package]]
+name = "fancyimpute"
+version = "0.7.0"
+description = "Matrix completion and feature imputation algorithms"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+cvxopt = "*"
+cvxpy = "*"
+knnimpute = ">=0.1.0"
+nose = "*"
+pytest = "*"
+scikit-learn = ">=0.24.2"
 
 [[package]]
 name = "fastjsonschema"
@@ -653,6 +677,14 @@ MarkupSafe = ">=2.0"
 i18n = ["Babel (>=2.7)"]
 
 [[package]]
+name = "joblib"
+version = "1.5.2"
+description = "Lightweight pipelining with Python functions"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[[package]]
 name = "json5"
 version = "0.9.17"
 description = "A Python implementation of the JSON5 data format."
@@ -939,6 +971,18 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "knnimpute"
+version = "0.1.0"
+description = "k-Nearest Neighbor imputation"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+numpy = ">=1.10"
+six = "*"
+
+[[package]]
 name = "lazy-loader"
 version = "0.3"
 description = "lazy_loader"
@@ -1148,6 +1192,14 @@ extra = ["lxml (>=4.6)", "pygraphviz (>=1.11)", "pydot (>=1.4.2)", "sympy (>=1.1
 test = ["pytest (>=7.2)", "pytest-cov (>=4.0)"]
 
 [[package]]
+name = "nose"
+version = "1.3.7"
+description = "nose extends unittest to make testing easier"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "notebook"
 version = "7.1.1"
 description = "Jupyter Notebook - A web-based notebook environment for interactive computing"
@@ -1355,6 +1407,49 @@ description = "Core utilities for Python packages"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "pandas"
+version = "2.3.2"
+description = "Powerful data structures for data analysis, time series, and statistics"
+category = "dev"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+numpy = [
+    { version = ">=1.22.4", markers = "python_version < \"3.11\"" },
+    { version = ">=1.23.2", markers = "python_version == \"3.11\"" },
+    { version = ">=1.26.0", markers = "python_version >= \"3.12\"" },
+]
+python-dateutil = ">=2.8.2"
+pytz = ">=2020.1"
+tzdata = ">=2022.7"
+
+[package.extras]
+test = ["hypothesis (>=6.46.1)", "pytest (>=7.3.2)", "pytest-xdist (>=2.2.0)"]
+pyarrow = ["pyarrow (>=10.0.1)"]
+performance = ["bottleneck (>=1.3.6)", "numba (>=0.56.4)", "numexpr (>=2.8.4)"]
+computation = ["scipy (>=1.10.0)", "xarray (>=2022.12.0)"]
+fss = ["fsspec (>=2022.11.0)"]
+aws = ["s3fs (>=2022.11.0)"]
+gcp = ["gcsfs (>=2022.11.0)", "pandas-gbq (>=0.19.0)"]
+excel = ["odfpy (>=1.4.1)", "openpyxl (>=3.1.0)", "python-calamine (>=0.1.7)", "pyxlsb (>=1.0.10)", "xlrd (>=2.0.1)", "xlsxwriter (>=3.0.5)"]
+parquet = ["pyarrow (>=10.0.1)"]
+feather = ["pyarrow (>=10.0.1)"]
+hdf5 = ["tables (>=3.8.0)"]
+spss = ["pyreadstat (>=1.2.0)"]
+postgresql = ["SQLAlchemy (>=2.0.0)", "psycopg2 (>=2.9.6)", "adbc-driver-postgresql (>=0.8.0)"]
+mysql = ["SQLAlchemy (>=2.0.0)", "pymysql (>=1.0.2)"]
+sql-other = ["SQLAlchemy (>=2.0.0)", "adbc-driver-postgresql (>=0.8.0)", "adbc-driver-sqlite (>=0.8.0)"]
+html = ["beautifulsoup4 (>=4.11.2)", "html5lib (>=1.1)", "lxml (>=4.9.2)"]
+xml = ["lxml (>=4.9.2)"]
+plot = ["matplotlib (>=3.6.3)"]
+output-formatting = ["jinja2 (>=3.1.2)", "tabulate (>=0.9.0)"]
+clipboard = ["PyQt5 (>=5.15.9)", "qtpy (>=2.3.0)"]
+compression = ["zstandard (>=0.19.0)"]
+consortium-standard = ["dataframe-api-compat (>=0.1.7)"]
+all = ["adbc-driver-postgresql (>=0.8.0)", "adbc-driver-sqlite (>=0.8.0)", "beautifulsoup4 (>=4.11.2)", "bottleneck (>=1.3.6)", "dataframe-api-compat (>=0.1.7)", "fastparquet (>=2022.12.0)", "fsspec (>=2022.11.0)", "gcsfs (>=2022.11.0)", "html5lib (>=1.1)", "hypothesis (>=6.46.1)", "jinja2 (>=3.1.2)", "lxml (>=4.9.2)", "matplotlib (>=3.6.3)", "numba (>=0.56.4)", "numexpr (>=2.8.4)", "odfpy (>=1.4.1)", "openpyxl (>=3.1.0)", "pandas-gbq (>=0.19.0)", "psycopg2 (>=2.9.6)", "pyarrow (>=10.0.1)", "pymysql (>=1.0.2)", "PyQt5 (>=5.15.9)", "pyreadstat (>=1.2.0)", "pytest (>=7.3.2)", "pytest-xdist (>=2.2.0)", "python-calamine (>=0.1.7)", "pyxlsb (>=1.0.10)", "qtpy (>=2.3.0)", "scipy (>=1.10.0)", "s3fs (>=2022.11.0)", "SQLAlchemy (>=2.0.0)", "tables (>=3.8.0)", "tabulate (>=0.9.0)", "xarray (>=2022.12.0)", "xlrd (>=2.0.1)", "xlsxwriter (>=3.0.5)", "zstandard (>=0.19.0)"]
 
 [[package]]
 name = "pandocfilters"
@@ -1570,6 +1665,14 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pytz"
+version = "2025.2"
+description = "World timezone definitions, modern and historical"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "pywin32"
 version = "306"
 description = "Python for Window Extensions"
@@ -1744,6 +1847,29 @@ optional = ["simpleitk", "astropy (>=5.0)", "cloudpickle (>=0.2.1)", "dask[array
 test = ["asv", "matplotlib (>=3.5)", "numpydoc (>=1.5)", "pooch (>=1.6.0)", "pytest (>=7.0)", "pytest-cov (>=2.11.0)", "pytest-localserver", "pytest-faulthandler"]
 
 [[package]]
+name = "scikit-learn"
+version = "1.7.2"
+description = "A set of python modules for machine learning and data mining"
+category = "dev"
+optional = false
+python-versions = ">=3.10"
+
+[package.dependencies]
+joblib = ">=1.2.0"
+numpy = ">=1.22.0"
+scipy = ">=1.8.0"
+threadpoolctl = ">=3.1.0"
+
+[package.extras]
+build = ["numpy (>=1.22.0)", "scipy (>=1.8.0)", "cython (>=3.0.10)", "meson-python (>=0.17.1)"]
+install = ["numpy (>=1.22.0)", "scipy (>=1.8.0)", "joblib (>=1.2.0)", "threadpoolctl (>=3.1.0)"]
+benchmark = ["matplotlib (>=3.5.0)", "pandas (>=1.4.0)", "memory_profiler (>=0.57.0)"]
+docs = ["matplotlib (>=3.5.0)", "scikit-image (>=0.19.0)", "pandas (>=1.4.0)", "seaborn (>=0.9.0)", "memory_profiler (>=0.57.0)", "sphinx (>=7.3.7)", "sphinx-copybutton (>=0.5.2)", "sphinx-gallery (>=0.17.1)", "numpydoc (>=1.2.0)", "Pillow (>=8.4.0)", "pooch (>=1.6.0)", "sphinx-prompt (>=1.4.0)", "sphinxext-opengraph (>=0.9.1)", "plotly (>=5.14.0)", "polars (>=0.20.30)", "sphinx-design (>=0.5.0)", "sphinx-design (>=0.6.0)", "sphinxcontrib-sass (>=0.3.4)", "pydata-sphinx-theme (>=0.15.3)", "sphinx-remove-toctrees (>=1.0.0.post1)", "towncrier (>=24.8.0)"]
+examples = ["matplotlib (>=3.5.0)", "scikit-image (>=0.19.0)", "pandas (>=1.4.0)", "seaborn (>=0.9.0)", "pooch (>=1.6.0)", "plotly (>=5.14.0)"]
+tests = ["matplotlib (>=3.5.0)", "scikit-image (>=0.19.0)", "pandas (>=1.4.0)", "pytest (>=7.1.2)", "pytest-cov (>=2.9.0)", "ruff (>=0.11.7)", "mypy (>=1.15)", "pyamg (>=4.2.1)", "polars (>=0.20.30)", "pyarrow (>=12.0.0)", "numpydoc (>=1.2.0)", "pooch (>=1.6.0)"]
+maintenance = ["conda-lock (==3.0.1)"]
+
+[[package]]
 name = "scipy"
 version = "1.12.0"
 description = "Fundamental algorithms for scientific computing in Python"
@@ -1770,6 +1896,24 @@ python-versions = ">=3.7"
 [package.dependencies]
 numpy = "*"
 scipy = "*"
+
+[[package]]
+name = "seaborn"
+version = "0.13.2"
+description = "Statistical data visualization"
+category = "dev"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+matplotlib = ">=3.4,<3.6.1 || >3.6.1"
+numpy = ">=1.20,<1.24.0 || >1.24.0"
+pandas = ">=1.2"
+
+[package.extras]
+dev = ["pytest", "pytest-cov", "pytest-xdist", "flake8", "mypy", "pandas-stubs", "pre-commit", "flit"]
+docs = ["numpydoc", "nbconvert", "ipykernel", "sphinx (<6.0.0)", "sphinx-copybutton", "sphinx-issues", "sphinx-design", "pyyaml", "pydata_sphinx_theme (==0.10.0rc2)"]
+stats = ["scipy (>=1.7)", "statsmodels (>=0.12)"]
 
 [[package]]
 name = "send2trash"
@@ -1983,6 +2127,14 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
+name = "tzdata"
+version = "2025.2"
+description = "Provider of IANA time zone data"
+category = "dev"
+optional = false
+python-versions = ">=2"
+
+[[package]]
 name = "uri-template"
 version = "1.3.0"
 description = "RFC 6570 URI Template Processor"
@@ -2059,7 +2211,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "0b3c625a3a73db0dac9490ab0c34c84da2ed5efba1b9eff2455c26b07fa8ac8c"
+content-hash = "dd510afcb628966e2cf1c315d48a79c9562c9dd5007eaf3d4a4700fcbf70fa60"
 
 [metadata.files]
 anyio = []
@@ -2081,6 +2233,7 @@ clarabel = []
 colorama = []
 comm = []
 contourpy = []
+cvxopt = []
 cvxpy = []
 cycler = []
 debugpy = []
@@ -2089,6 +2242,7 @@ defusedxml = []
 ecos = []
 exceptiongroup = []
 executing = []
+fancyimpute = []
 fastjsonschema = []
 fbpca = []
 filelock = []
@@ -2106,6 +2260,7 @@ ipywidgets = []
 isoduration = []
 jedi = []
 jinja2 = []
+joblib = []
 json5 = []
 jsonpointer = []
 jsonschema = []
@@ -2123,6 +2278,7 @@ jupyterlab-pygments = []
 jupyterlab-server = []
 jupyterlab-widgets = []
 kiwisolver = []
+knnimpute = []
 lazy-loader = []
 llvmlite = []
 markupsafe = []
@@ -2138,6 +2294,7 @@ nbconvert = []
 nbformat = []
 nest-asyncio = []
 networkx = []
+nose = []
 notebook = []
 notebook-shim = []
 numba = []
@@ -2158,6 +2315,7 @@ opencv-python = []
 osqp = []
 overrides = []
 packaging = []
+pandas = []
 pandocfilters = []
 parso = []
 pexpect = []
@@ -2177,6 +2335,7 @@ pyparsing = []
 pytest = []
 python-dateutil = []
 python-json-logger = []
+pytz = []
 pywin32 = []
 pywinpty = []
 pyyaml = []
@@ -2191,8 +2350,10 @@ rfc3986-validator = []
 rpds-py = []
 ruff = []
 scikit-image = []
+scikit-learn = []
 scipy = []
 scs = []
+seaborn = []
 send2trash = []
 six = []
 sniffio = []
@@ -2210,6 +2371,7 @@ traitlets = []
 triton = []
 types-python-dateutil = []
 typing-extensions = []
+tzdata = []
 uri-template = []
 urllib3 = []
 wcwidth = []

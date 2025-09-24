@@ -5,6 +5,7 @@ import math
 import cvxpy as cp
 import numpy as np
 import torch
+from joblib import Parallel, delayed
 from scipy.linalg import lstsq
 from torch import Tensor
 from torch.autograd.variable import Variable
@@ -24,12 +25,27 @@ from csmc.settings import T
 #         Y[i, :] = np.linalg.pinv(C[mask_i]) @ X[mask_i, i]
 
 
-def _dls(X: np.ndarray, ok_mask: np.ndarray, C: np.ndarray, Y: np.ndarray, n: int) -> None:
-    """Solve the least squares for each column of array X."""
+# def _dls(X: np.ndarray, ok_mask: np.ndarray, C: np.ndarray, Y: np.ndarray, n: int) -> None:
+#     """Solve the least squares for each column of array X."""
+#
+#     for i in range(n):
+#         mask_i = ok_mask[:, i]
+#         Y[:, i] = lstsq(C[mask_i], X[mask_i, i], lapack_driver="gelsy")[0]
 
-    for i in range(n):
+
+def _dls(X: np.ndarray, ok_mask: np.ndarray, C: np.ndarray, Y: np.ndarray, n: int) -> None:
+    """Solve the least squares for each column of array X in parallel."""
+
+    def solve_column(i: int) -> np.ndarray:
         mask_i = ok_mask[:, i]
-        Y[:, i] = lstsq(C[mask_i], X[mask_i, i], lapack_driver="gelsy")[0]
+        return lstsq(C[mask_i], X[mask_i, i], lapack_driver="gelsy")[0]
+
+    results = Parallel(n_jobs=-1, backend="loky")(delayed(solve_column)(i) for i in range(n))
+
+    for i, sol in enumerate(results):
+        Y[:, i] = sol
+
+
 
 
 def _dls_torch(X: T, ok_mask: T, C: T, Y: T, n: int, cuda_support: bool) -> None:
