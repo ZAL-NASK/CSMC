@@ -20,10 +20,12 @@ class SGDBase(Generic[T]):
     """Base class for SGD."""
 
     def __init__(self, X: T, stepsize: float, rank: int, max_iter: int = 1000,
+                 tol: float = 1e-6
                  ) -> None:
         self.stepsize = stepsize
         self.rank = rank
         self.max_iter = max_iter
+        self.tol = tol
 
     def spectral_initialization(self, X, r, p):
         """
@@ -46,13 +48,16 @@ class SGDBase(Generic[T]):
         p = np.sum(~missing_mask) / X.size
         self._prepare(X, missing_mask)
         L, R = self.spectral_initialization(X, self.rank, p)
-        for t in range(self.max_iter):
-            X_init = L @ R.T
-            Z = np.multiply(~missing_mask, X_init - X)
+        for iter_ in range(self.max_iter):
+            X_filled = L @ R.T
+            Z = np.multiply(~missing_mask, X_filled - X)
             L = L - (self.stepsize / p) * Z @ R @ np.linalg.inv(R.T @ R)
             R = R - (self.stepsize / p) * Z.T @ L @ np.linalg.inv(L.T @ L)
-
-        return L @ R.T
+            X_new = L @ R.T
+            dist = np.linalg.norm(X_filled - X_new, 'fro') / max(np.linalg.norm(X, 'fro'), 1)
+            if dist < self.tol:
+                break
+        return X_new
 
     @abstractmethod
     def _missing_mask(self, X: T) -> T:
