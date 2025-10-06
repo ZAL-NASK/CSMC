@@ -67,6 +67,10 @@ M_filled = solver.fit_transform(M_incomplete, np.isnan(M_incomplete))
 * `PGD`: Nuclear norm minimization using Proximal Gradient Descent (PGD)  [Spectral Regularization Algorithms for Learning Large Incomplete Matrices](http://web.stanford.edu/~hastie/Papers/mazumder10a.pdf) by Mazumder et. al.
 * `CSPGD`: Matrix completion by CSPGD
 * `CGM`: Matrix completion with Frank-Wolfe method
+* `SGD`: Scaled Gradient Descent (SGD)  [Accelerating Ill-Conditioned Low-Rank Matrix Estimation via
+  Scaled Gradient Descent(https://jmlr.org/papers/volume22/20-1067/20-1067.pdf) by Tong et. al.
+* `SVP`: Singular Value Projection (
+  SVP)  [Guaranteed Rank Minimization via Singular Value Projection](https://arxiv.org/pdf/0909.5457) by Meka et. al.
 
 ## Examples
 

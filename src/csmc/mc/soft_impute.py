@@ -44,7 +44,7 @@ class SoftImputeBase(Generic[T]):
         rank = self.max_rank
         for iter_ in range(self.max_iter):
             Z_old[ok_mask] = X[ok_mask]
-            if rank:
+            if rank is not None:
                 Z_new, rank = self.shrinkage_operator(Z_old, rank)
             else:
                 Z_new, rank = self.shrinkage_operator(Z_old)

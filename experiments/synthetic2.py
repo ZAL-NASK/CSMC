@@ -61,7 +61,7 @@ for rank in ranks:
             error = approx_err(M_filled, M)
             writer.writerow(base_log_data + ["NN", error, elapsed_time, 1 - fraction_missing])
 
-            for cur_rank in [rank, 200]:
+            for cur_rank in [rank - 1, rank]:
                 M_incomplete = np.copy(M_incomplete_tmp)
                 print(f"Starting CUR with rank {cur_rank}")
                 solver = CUR(M_incomplete, col_number=n_selected_cols, rank=cur_rank)
@@ -79,10 +79,10 @@ for rank in ranks:
                 M_incomplete[~ok_mask] = np.nan
                 print(f"Starting MC2 with rank {mc2_rank}")
                 start = time.perf_counter()
-                M_filled = mc2(M_incomplete, np.array(M), mc2_rank)
+                M_filled, p_observation = mc2(M_incomplete, np.array(M), mc2_rank)
                 elapsed_time = time.perf_counter() - start
                 error = approx_err(M_filled, M)
-                writer.writerow(base_log_data + [f"MC2-{mc2_rank}", error, elapsed_time, 1 - fraction_missing])
+                writer.writerow(base_log_data + [f"MC2-{mc2_rank}", error, elapsed_time, p_observation])
 
             print("Starting AMC")
             M_incomplete = np.copy(M_incomplete_tmp)

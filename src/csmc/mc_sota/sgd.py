@@ -20,7 +20,7 @@ class SGDBase(Generic[T]):
     """Base class for SGD."""
 
     def __init__(self, X: T, stepsize: float, rank: int, max_iter: int = 1000,
-                 tol: float = 1e-6
+                 tol: float = 1e-10
                  ) -> None:
         self.stepsize = stepsize
         self.rank = rank

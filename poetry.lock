@@ -963,6 +963,26 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "kagglehub"
+version = "0.3.13"
+description = "Access Kaggle resources anywhere"
+category = "dev"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+packaging = "*"
+pyyaml = "*"
+requests = "*"
+tqdm = "*"
+
+[package.extras]
+hf-datasets = ["datasets", "pandas"]
+pandas-datasets = ["pandas"]
+polars-datasets = ["polars"]
+signing = ["betterproto (>=2.0.0b6)", "model-signing", "sigstore (>=3.6.1)"]
+
+[[package]]
 name = "kiwisolver"
 version = "1.4.5"
 description = "A fast implementation of the Cassowary constraint solver"
@@ -2083,6 +2103,24 @@ optional = false
 python-versions = ">= 3.8"
 
 [[package]]
+name = "tqdm"
+version = "4.67.1"
+description = "Fast, Extensible Progress Meter"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = { version = "*", markers = "platform_system == \"Windows\"" }
+
+[package.extras]
+dev = ["pytest (>=6)", "pytest-cov", "pytest-timeout", "pytest-asyncio (>=0.24)", "nbval"]
+discord = ["requests"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+notebook = ["ipywidgets (>=6)"]
+
+[[package]]
 name = "traitlets"
 version = "5.14.1"
 description = "Traitlets Python configuration system"
@@ -2211,7 +2249,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "dd510afcb628966e2cf1c315d48a79c9562c9dd5007eaf3d4a4700fcbf70fa60"
+content-hash = "c43f9f6a2e8ffe840bc1088b99e7d0fb60ddebecf778ccd800d6265951fde7b8"
 
 [metadata.files]
 anyio = []
@@ -2277,6 +2315,7 @@ jupyterlab = []
 jupyterlab-pygments = []
 jupyterlab-server = []
 jupyterlab-widgets = []
+kagglehub = []
 kiwisolver = []
 knnimpute = []
 lazy-loader = []
@@ -2367,6 +2406,7 @@ tinycss2 = []
 tomli = []
 torch = []
 tornado = []
+tqdm = []
 traitlets = []
 triton = []
 types-python-dateutil = []
