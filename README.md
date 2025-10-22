@@ -71,6 +71,11 @@ M_filled = solver.fit_transform(M_incomplete, np.isnan(M_incomplete))
   Scaled Gradient Descent(https://jmlr.org/papers/volume22/20-1067/20-1067.pdf) by Tong et. al.
 * `SVP`: Singular Value Projection (
   SVP)  [Guaranteed Rank Minimization via Singular Value Projection](https://arxiv.org/pdf/0909.5457) by Meka et. al.
+* `MC2`:
+  MC2 [MC2: a two-phase algorithm for leveraged matrix completion](https://academic.oup.com/imaiai/article-abstract/7/3/581/4833005?redirectedFrom=fulltext)
+  by Eftekhari et. al.
+* `CUR+Nuc`: CUR+Nuc based on CUR+ for uniformly sampled
+  entries [CUR Algorithm for Partially Observed Matrices](https://proceedings.mlr.press/v37/xua15.pdf) by Xu et. al.
 
 ## Examples
 

@@ -7,8 +7,7 @@ from csmc.css import uniform
 from csmc.errors.errors import approx_err, approx_err_unknown, nmae_unknown, snr
 from csmc.mc.nn_completion import NuclearNormMin
 from csmc.transform import dls
-from tests.data_generation import create_rank_k_dataset
-from tests.linalg import matrix_coherence
+from tests.data_generation import create_rank_k_dataset, set_seed
 
 n_rows = 300
 n_cols = 1000
@@ -18,7 +17,7 @@ ranks = [10]
 n_trials = 20
 
 c_rates = [i * 0.1 for i in range(1, 10)]
-
+set_seed(2035)
 # missing_rates = [i * 0.1 for i in range(1, 10)]
 missing_rates = [0.8]
 lib = "numpy"
